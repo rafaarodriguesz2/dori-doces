@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dori.css">
+</head>
+
+<body>
+    <div>
+
+
+        <h1>❤️DOCERIA GOURMET DA DORI (⸝⸝๑﹏๑⸝⸝)❤️</h1>
+        <label>❤️Insira a quantidade de Macarons desejada:❤️</label>
+        <br>
+        <input type="number" id="ipt_macarons">
+        <br>
+        <label>❤️Insira o preço unitário dos Macarons:❤️</label>
+        <br>
+        <input type="number" id="ipt_precoMacarons">
+        <br>
+        <label>❤️Insira a quantidade de Brigadeiros desejada:❤️</label>
+        <br>
+        <input type="number" id="ipt_brigadeiros">
+        <br>
+        <label>❤️Insira o preço unitário dos Brigadeiros:❤️</label>
+        <br>
+        <input type="number" id="ipt_precoBrigadeiros">
+        <br>
+        <label>❤️Insira a quantidade de Cupcakes desejada:❤️</label>
+        <br>
+        <input type="number" id="ipt_cupcakes">
+        <br>
+        <label>❤️Insira o preço unitário dos Cupcakes:❤️</label>
+        <br>
+        <input type="number" id="ipt_precoCupcakes">
+        <br>
+        <label>❤️Insira a quantidade de Cheesecakes desejada:❤️</label>
+        <br>
+        <input type="number" id="ipt_cheesecakes">
+        <br>
+        <label>❤️Insira o preço unitário dos Cheesecakes:❤️</label>
+        <br>
+        <input type="number" id="ipt_precoCheesecakes">
+        <br>
+        <label>❤️Insira quantos clientes você deseja simular:❤️</label>
+        <br>
+        <input type="number" id="ipt_qtdClientes">
+        <br>
+        <label>❤️Valor da taxa (%): ❤️</label>
+        <br>
+        <input type="text" id="ipt_taxa">
+        <button onclick="verificar()">Verificar Vendas</button>
+        <br>
+        <div id="corpo">
+            <div id="macarons"></div>
+            <div id="brigadeiros"></div>
+            <div id="cupcakes"></div>
+            <div id="cheesecakes"></div> <Br> <br>
+            <h2 id="mensagem"></h2>
+            <h3 id="avaliacao"></h3>
+        </div>
+    </div>
+    <div class="imagem">
+        <img src="https://pm1.aminoapps.com/6860/e012913631e7acddcb826e6209255af86aa04e54r1-750-793v2_uhq.jpg" alt="">
+    </div>
+
+</body>
+
+<style>
+    #corpo {
+        text-align: center;
+    }
+</style>
+
+<script>
+    function verificar() {
+        brigadeiros.innerHTML = ``
+        cupcakes.innerHTML = ``
+        macarons.innerHTML = ``
+        cheesecakes.innerHTML = ``
+        mensagem.innerHTML = ``
+        avaliacao.innerHTML = ''
+
+        var clientes = Number(ipt_qtdClientes.value)
+        let qtdMacarons = Number(ipt_macarons.value)
+        let qtdBrigadeiros = Number(ipt_brigadeiros.value)
+        let qtdCupcakes = Number(ipt_cupcakes.value)
+        let qtdCheesecakes = Number(ipt_cheesecakes.value)
+        let precoMacarons = Number(ipt_precoMacarons.value)
+        let precoBrigadeiros = Number(ipt_precoBrigadeiros.value)
+        let precoCupcakes = Number(ipt_precoCupcakes.value)
+        let precoCheesecakes = Number(ipt_precoCheesecakes.value)
+        let taxa = Number(ipt_taxa.value)
+
+        if (qtdBrigadeiros < 0 || qtdCheesecakes < 0 || qtdCupcakes < 0 || qtdMacarons < 0 || precoBrigadeiros < 0 || precoCheesecakes < 0 || precoCupcakes < 0 || precoMacarons < 0) {
+            alert('Digite apenas valores maiores que zero!')
+        }
+        else {
+            var totalBrig = 0
+            var totalCup = 0
+            var totalCheese = 0
+            var totalMac = 0
+            var notaTotal = 0
+
+            for (x = 1; x <= clientes; x++) {
+
+                for (i = 1; i <= (qtdBrigadeiros + qtdCheesecakes + qtdCupcakes + qtdMacarons); i++) {
+
+                    if (totalMac < qtdMacarons) {
+                        macarons.innerHTML += `NÚMERO DA VENDA: ${i} - <img src="https://guiadacozinha.com.br/wp-content/uploads/2021/08/macaron-768x619.jpg" alt="" width="100px"> - VALOR UNITÁRIO: ${precoMacarons} - VALOR TAXA: ${precoMacarons + (precoMacarons * (taxa / 100))} - TAXA: ${taxa}<br>`
+                        totalMac++
+                    }
+                    else if (totalBrig < qtdBrigadeiros) {
+                        brigadeiros.innerHTML += `NÚMERO DA VENDA: ${i} - <img src="https://i.panelinha.com.br/i1/228-q-2859-brigadeiro.webp" alt="" width="100px"> - VALOR UNITÁRIO: ${precoBrigadeiros} - VALOR TAXA: ${precoBrigadeiros + (precoBrigadeiros * (taxa / 100))} TAXA: ${taxa}<Br>`
+                        totalBrig++
+                    }
+                    else if (totalCup < qtdCupcakes) {
+                        cupcakes.innerHTML += `NÚMERO DA VENDA: ${i} - <img src="https://acdn-us.mitiendanube.com/stores/124/083/products/cupcakes-cupcakedecorado1-4a78e9cedf0a5c783816139237197788-480-0.jpg" alt="" width="100px"> - VALOR UNITÁRIO: ${precoCupcakes} - VALOR COM TAXA: ${precoCupcakes + (precoCupcakes * (taxa / 100))} - TAXA - ${taxa}%<br>`
+                        totalCup++
+                    }
+                    else if (totalCheese < qtdCheesecakes) {
+                        cheesecakes.innerHTML += `NÚMERO DA VENDA: ${i} - <img src="https://cozinhaglobo.com.br/wp-content/uploads/2023/06/receita-de-cheesecake-de-morango-1024x768.jpg" alt="" width="100px"> - VALOR UNITÁRIO: ${precoCheesecakes} - VALOR COM TAXA: ${precoCheesecakes + (precoCheesecakes * (taxa / 100))} - TAXA: ${taxa}<br>`
+                        totalCheese++
+                    }
+                }
+                var nota = Number((Math.random() * 5).toFixed())
+                notaTotal += nota
+                console.log(notaTotal)
+                avaliacao.innerHTML += nota < 4 ? `Avaliação do ${x}º cliente: ${nota} 😞<br> ` : `Avaliação do ${x}º cliente: ${nota} 😊<br>`
+            }
+            var media = (totalMac * precoMacarons) + (totalBrig * precoBrigadeiros) + (totalCup * precoCupcakes) + (totalCheese * precoCheesecakes)
+            var mediaAvaliacao = notaTotal / clientes
+
+            mensagem.innerHTML += `Com a quantidade de ${qtdMacarons} Macarons, ${qtdBrigadeiros} Brigadeiros, ${qtdCupcakes} Cupcakes e ${qtdCheesecakes} Cheesecakes, a venda totalizará R$${media} <br>`
+
+            mensagem.innerHTML += mediaAvaliacao < 4 ? `A média das avaliações é: ${mediaAvaliacao} 😞` : `A média das avaliações é: ${mediaAvaliacao} 😊`
+            console.log(clientes)
+        }''
+
+    }
+</script>
+
+</html>

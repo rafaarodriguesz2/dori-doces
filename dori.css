@@ -1,0 +1,41 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: pink;
+    
+    background-repeat: no-repeat;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url(https://wallpapers.com/images/featured/fundo-de-coracao-rosa-5jv4ejt1adew360j.webp);
+    background-size:cover ;
+}
+
+button{
+    background-color: rgb(236, 112, 133);
+    color: rgb(255, 255, 255);
+    width: 200px;
+    height: 60px;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+input{
+    
+    height: 60px;
+    border-radius: 20px;
+    background-color:rgb(170, 58, 77);
+    color: white;
+    text-align: center;
+}
+
+label{
+    font-size: 30px;
+    color: white;
+    font-weight: 800;
+}
+
+.imagem img{
+    border-radius: 30px;
+}
